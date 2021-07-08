@@ -5,6 +5,7 @@ Experiments with small digital design miniprojects using mostly Verilog and Blue
 Verilog projects
 * Generate Propagate Kill Adder
 * Wallace Multiplier
+* 1-12 counter with parallel load and reset
 * Ripple Carry Adder
 * Carry Lookahead Adder
 
