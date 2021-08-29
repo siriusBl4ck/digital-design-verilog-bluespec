@@ -12,3 +12,4 @@ Verilog projects
 
 BlueSpec SystemVerilog projects:
 * Simple Multiplier
+* ALU
