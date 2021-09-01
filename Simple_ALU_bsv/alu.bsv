@@ -39,7 +39,7 @@ module mkAlu(Alu_ifc);
         if (opcode==0) res <= a + b;
         else if (opcode==1) res <= a - b;
         else if (opcode==2) res <= b - a;
-        else if (opcode==3 && b != 0) res <= a & b;
+        else if (opcode==3) res <= a & b;
         else err <= 1;
 
         rdy <= True;
