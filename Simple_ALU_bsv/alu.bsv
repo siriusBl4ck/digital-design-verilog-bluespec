@@ -5,7 +5,7 @@ module mkTest(Empty);
     Alu_ifc myAlu <- mkAlu;
     
     rule rl_go;
-        myAlu.put_command(12, 2, 4);
+        myAlu.put_command(12, 2, 3);
     endrule
 
     rule rl_finish;
@@ -17,9 +17,9 @@ module mkTest(Empty);
 endmodule: mkTest
 
 interface Alu_ifc;
-    method Action put_command(int x, int y, int opnum);
+    method Action put_command(int x, int y, Bit#(2) opnum);
     method int get_result();
-    method int checkErr();
+    method Bit#(1) checkErr();
 endinterface
 
 (* synthesize *)
@@ -27,8 +27,8 @@ module mkAlu(Alu_ifc);
     Reg#(int) res <- mkReg(0);
     Reg#(int) a <- mkReg(0);
     Reg#(int) b <- mkReg(0);
-    Reg#(int) opcode <- mkReg(0);
-    Reg#(int) err <- mkReg(0);
+    Reg#(Bit#(2)) opcode <- mkReg(0);
+    Reg#(Bit#(1)) err <- mkReg(0);
     Reg#(Bool) rdy <- mkReg(True);
 
     rule rl_compute(!rdy);
@@ -41,7 +41,7 @@ module mkAlu(Alu_ifc);
         rdy <= True;
     endrule
 
-    method Action put_command(int x, int y, int opnum) if (rdy);
+    method Action put_command(int x, int y, Bit#(2) opnum) if (rdy);
         a <= x;
         b <= y;
         opcode <= opnum;
@@ -52,7 +52,7 @@ module mkAlu(Alu_ifc);
         return res;
     endmethod
 
-    method int checkErr() if (rdy);
+    method Bit#(1) checkErr() if (rdy);
         return err;
     endmethod
 endmodule: mkAlu
