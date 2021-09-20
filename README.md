@@ -18,4 +18,4 @@ BlueSpec SystemVerilog projects:
 
 Sessions conducted by me for CFI, IIT Madras
 * FSMs using StmtFSM and Integrating custom RTL in Bluespec: https://my.visme.co/view/31z8edvq-bluespec-lecture-series
-* Intro to Raytracing: https://my.visme.co/view/mxz81g3n-6j02e0nvwvdyl8zq
+* Intro to Raytracing: https://my.visme.co/view/mxz81g3n-intro-to-raytracing
