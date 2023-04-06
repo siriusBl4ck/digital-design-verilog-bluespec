@@ -1,0 +1,36 @@
+input and output declare wires
+assign statements make connections between the wires
+
+if the width of the signals a, b, c is same, we can do assigns like:
+assign {a, b, b, c} = {w, x, y, z}
+
+! or ~ is not operator
+& is bitwise and, && is logical and
+| (bitwise or),  || (logical or)
+^ is bitwise XOR
+
+Operators are almost same as c
+
+the order of wire statements doesnt really matter, think as if youre creating a circuit
+
+wires
+wires are just that: more wires, apart from input and output. to implement more complicated circuits, we can divide the ckt into
+components and then connect the parts using wires
+
+Vectors
+Vectors are used to group related signals using one name to make it more convenient to manipulate. For example, wire [7:0] w; declares an 8-bit vector named w that is functionally equivalent to having 8 separate wires.
+
+Notice that the declaration of a vector places the dimensions before the name of the vector, which is unusual compared to C syntax. However, the part select has the dimensions after the vector name as you would expect.
+
+
+wire [99:0] my_vector;      // Declare a 100-element vector
+assign out = my_vector[10]; // Part-select one bit out of the vector
+
+Vectors must be declared:
+
+<input/output (optional)> type [upper:lower] vector_name;
+
+type specifies the datatype of the vector. This is usually wire or reg. If you are declaring a input or output port, the type can additionally include the port type (e.g., input or output) as well.
+
+The endianness (or, informally, "direction") of a vector is whether the the least significant bit has a lower index (little-endian, e.g., [3:0]) or a higher index (big-endian, e.g., [0:3]). In Verilog, once a vector is declared with a particular endianness, it must always be used the same way. e.g., writing vec[0:3] when vec is declared wire [3:0] vec; is illegal. Being consistent with endianness is good practice, as weird bugs occur if vectors of different endianness are assigned or used together.
+
